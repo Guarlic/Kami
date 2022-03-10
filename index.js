@@ -44,14 +44,19 @@ client.on("messageCreate", async msg => {
     } else if (msg.content == "꺠미야 잘가") {
       console.log('빠이빠이 인사 ㅜㅜ');
       msg.reply('잘가요 ㅜㅜ');
+    } else if (msg.content == "꺠미야 서버") {
+      console.log('서버이름을 답해요!!');
+      msg.reply(`이 서버의 이름은 \`${msg.guild.name}\` (이)에요!`);
+    } else if (msg.content == "꺠미야 채널") {
+      console.log('채널이름을 답해요!!');
+      msg.reply(`이 채널의 이름은 \`${msg.channel.name}\` (이)에요!`);
     } else if (msg.content == "꺠미야") {
       console.log('누가 꺠미를 불러요!!');
       msg.reply('저 여깄어요!');
     } else if (msg.content.startsWith('꺠미야')) {
       console.log('?');
       msg.reply(`\`${msg.content.slice(4)}\`..?`);
-    }
-    // 작성자가 봇이면 return
+    }    // 작성자가 봇이면 return
     if (msg.author.bot) return;
     if (!msg.content.startsWith(prefix)) return;
     
