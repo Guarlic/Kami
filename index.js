@@ -4,7 +4,7 @@ let client = new Client({ intents: [Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES ] });
 client.commands = new Collection();
 
-const { clientid, token } = require('./json/config.json');
+const { clientid, token } = require('./config.json');
 
 client.commands = new Collection();
 let commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
