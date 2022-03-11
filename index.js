@@ -50,6 +50,17 @@ client.on("messageCreate", async msg => {
     } else if (msg.content == "꺠미야 채널") {
       console.log('채널이름을 답해요!!');
       msg.reply(`이 채널의 이름은 \`${msg.channel.name}\` (이)에요!`);
+    } else if (msg.content == "꺠미야 유저") {
+      console.log('유저이름을 답해요!!');
+      if (msg.author.discriminator == 4857) {
+        console.log('앗! 구알릭님이에요!!');
+        if (msg.member.displayName != "Guarlic3432")
+          msg.reply(`앗 구알릭님!! 닉네임이 ${msg.member.displayName}(이)라서 못알아봤잖아요!`);
+        else
+          msg.reply('앗 구알릭님!!');
+      }
+      else
+        msg.reply(`당신은 ${msg.author.username}! 맞죠?`);
     } else if (msg.content == "꺠미야") {
       console.log('누가 꺠미를 불러요!!');
       msg.reply('저 여깄어요!');
