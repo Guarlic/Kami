@@ -20,6 +20,7 @@ for (const file of commandFiles) {
 // 클라이언트 시작
 client.once('ready', () => {
     console.log('꺠미봇 준비완료!');
+    client.user.setActivity('꺠미야', { type: "LISTENING" })
 });
 
 client.on("messageCreate", async msg => {
