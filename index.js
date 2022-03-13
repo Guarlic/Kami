@@ -1,4 +1,4 @@
-let { Client, Collection, Intents } = require('discord.js');
+let { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 let fs = require('fs');
 let client = new Client({ intents: [Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES ] });
@@ -59,8 +59,12 @@ client.on("messageCreate", async msg => {
           msg.reply(`앗 구알릭님!! 닉네임이 ${msg.member.displayName}(이)라서 못알아봤잖아요!`);
         else
           msg.reply('앗 구알릭님!!');
-      }
-      else
+        
+        msg.react('♥️');
+      } else if (msg.author.username == "Guarlic3432" || msg.author.displayName == "Guarlic3432") {
+        console.log('어..?');
+        msg.reply('앗 구알릭님!!.. 이 아니네..?');
+      } else
         msg.reply(`당신은 ${msg.author.username}! 맞죠?`);
     } else if (msg.content == "꺠미야") {
       console.log('누가 꺠미를 불러요!!');
