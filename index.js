@@ -23,6 +23,10 @@ client.once('ready', () => {
     client.user.setActivity('꺠미야', { type: "LISTENING" })
 });
 
+function getRandom(min, max) {
+  return Math.random() * (max + 1 - min) + min;
+}
+
 client.on("messageCreate", async msg => {
     // 메시지 값 콘솔
     console.log(`[ ${msg.guild.name} ] "${msg.channel.name}" ${msg.member.user.username}#${msg.member.user.discriminator} : ${msg.content}`);
@@ -69,6 +73,20 @@ client.on("messageCreate", async msg => {
     } else if (msg.content == "꺠미야") {
       console.log('누가 꺠미를 불러요!!');
       msg.reply('저 여깄어요!');
+    } else if (msg.content == "꺠미야 뿜") {
+      console.log('뿜? 뿜??');
+      msg.reply('뿜빠리빰빠바 빠리빠리빰뿜!!');
+    } else if (msg.content == "꺠미야 후하") {
+      console.log('후하..?!');
+      const result = Math.floor(Math.random() * 2 + 1);
+      switch (result) {
+        case 1:
+          msg.reply('후 하 후 후 하');
+          break;
+        case 2:
+          msg.reply('후후 하하 후 후후후 하하하하 히힣 헤헿 핳');
+          break;
+      }
     } else if (msg.content.startsWith('꺠미야')) {
       console.log('?');
       msg.reply(`\`${msg.content.slice(4)}\`..?`);
