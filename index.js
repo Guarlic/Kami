@@ -87,6 +87,12 @@ client.on("messageCreate", async msg => {
           msg.reply('후후 하하 후 후후후 하하하하 히힣 헤헿 핳');
           break;
       }
+    } else if (msg.content == "꺠미야 흙흙") {
+      console.log('흙흙..ㅜㅜ');
+      msg.reply('흙흙모래모래자갈자갈돌돌바위바위용암용암마그마마그마백두산백두산지구지구달달해해안드로메다안드로메다우주우주평행우주평행우주옴니버스옴니버스공허공허무무..');
+    } else if (msg.content == "꺠미야 꿻") {
+      console.log('꿻..');
+      msg.reply('뀁쀞뙍꽦뺋뽽꽩쨇');
     } else if (msg.content.startsWith('꺠미야')) {
       console.log('?');
       msg.reply(`\`${msg.content.slice(4)}\`..?`);
