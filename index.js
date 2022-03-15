@@ -93,6 +93,9 @@ client.on("messageCreate", async msg => {
     } else if (msg.content == "꺠미야 꿻") {
       console.log('꿻..');
       msg.reply('뀁쀞뙍꽦뺋뽽꽩쨇');
+    } else if (msg.content == "꺠미야 애플") {
+      console.log('애플이다~');
+      msg.reply('애플이 최고지!!');
     } else if (msg.content.startsWith('꺠미야')) {
       console.log('?');
       msg.reply(`\`${msg.content.slice(4)}\`..?`);
