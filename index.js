@@ -23,10 +23,6 @@ client.once('ready', () => {
     client.user.setActivity('꺠미야', { type: "LISTENING" })
 });
 
-function getRandom(min, max) {
-  return Math.random() * (max + 1 - min) + min;
-}
-
 client.on("messageCreate", async msg => {
     // 메시지 값 콘솔
     console.log(`[ ${msg.guild.name} ] "${msg.channel.name}" ${msg.member.user.username}#${msg.member.user.discriminator} : ${msg.content}`);
