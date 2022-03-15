@@ -96,6 +96,13 @@ client.on("messageCreate", async msg => {
     } else if (msg.content == "꺠미야 애플") {
       console.log('애플이다~');
       msg.reply('애플이 최고지!!');
+    } else if (msg.content == "꺠미 바보") {
+      console.log('ㅂㄷㅂㄷ');
+      msg.reply('ㅖ? 저 바보 아니라구요!!');
+    } else if (msg.content == "꺠미 천재") {
+      console.log('ㅂㄷㅂ.. 아 와!!');
+      msg.reply('ㅖ? 저 바보 아ㄴ.. 아 천재라구요? 감사해요!!');
+      msg.react('♥️');
     } else if (msg.content.startsWith('꺠미야')) {
       console.log('?');
       msg.reply(`\`${msg.content.slice(4)}\`..?`);
