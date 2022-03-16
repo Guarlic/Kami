@@ -1,13 +1,21 @@
 let { Client, Collection, Intents, MessageEmbed } = require('discord.js');
+let readline = require('readline');
 let fs = require('fs');
 let client = new Client({ intents: [Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES ] });
 client.commands = new Collection();
 
 const { clientid, token } = require('./config.json');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
 client.commands = new Collection();
 let commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+let commandjson = fs.readFileSync('command.json','utf-8');
+let obj = JSON.parse(commandjson);
+let cmdlist = obj.cmdlist;
 
 const prefix = '-';
 
@@ -99,6 +107,10 @@ client.on("messageCreate", async msg => {
       console.log('ㅂㄷㅂ.. 아 와!!');
       msg.reply('ㅖ? 저 바보 아ㄴ.. 아 천재라구요? 감사해요!!');
       msg.react('♥️');
+    } else if (msg.content == "꺠미야 응아니야") {
+      console.log('...?');
+      msg.reply('..ㅖ? ㅂㄷㅂㄷ');
+      msg.react('💔');
     } else if (msg.content.startsWith('꺠미야')) {
       console.log('?');
       msg.reply(`\`${msg.content.slice(4)}\`..?`);
