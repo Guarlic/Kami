@@ -1,21 +1,13 @@
 let { Client, Collection, Intents, MessageEmbed } = require('discord.js');
-let readline = require('readline');
 let fs = require('fs');
 let client = new Client({ intents: [Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES ] });
 client.commands = new Collection();
 
 const { clientid, token } = require('./config.json');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
 client.commands = new Collection();
 let commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-let commandjson = fs.readFileSync('command.json','utf-8');
-let obj = JSON.parse(commandjson);
-let cmdlist = obj.cmdlist;
 
 const prefix = '-';
 
