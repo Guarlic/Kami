@@ -19,8 +19,6 @@ let cmdlist = obj.cmdlist;
 client.commands = new Collection();
 let commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-const prefix = '꺠미야';
-
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     console.log(command.data.name);
@@ -42,9 +40,8 @@ client.on("messageCreate", async msg => {
       if (msg.content == cmdlist[i].CmdName) {
         console.log(`${cmdlist[i].CmdName} 명령어가 인식되었습니다!`);
         msg.reply(cmdlist[i].output);
-        if (cmdlist[i].react != null) {
+        if (cmdlist[i].react != null)
           msg.react(cmdlist[i].react);
-        }
       }
     }
 });
