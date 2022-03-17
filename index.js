@@ -42,6 +42,9 @@ client.on("messageCreate", async msg => {
         msg.reply(cmdlist[i].output);
         if (cmdlist[i].react != null)
           msg.react(cmdlist[i].react);
+      } else if (msg.content.startsWith('꺠미야')) {
+        msg.reply(`\`${msg.content}\`..?`);
+        break;
       }
     }
 });
