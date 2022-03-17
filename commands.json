@@ -1,0 +1,7 @@
+{
+  "cmdlist": [
+    {"CmdName":"꺠미야", "output":"저 여깄어요!", "react":null},
+    {"CmdName":"꺠미야 안녕", "output":"안녕하세여!", "react":null},
+    {"CmdName":"꺠미야 뭐해", "output":"코드를 읽고 있어요!", "react":null}
+  ]
+}
