@@ -18,6 +18,8 @@ let cmdlist = obj.cmdlist;
 
 let commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
+console.log('<감지된 추가 명령어>\n');
+
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     console.log(command.name);
@@ -28,7 +30,7 @@ const default_prefix = "꺠미야 ";
 
 // 클라이언트 시작
 client.once('ready', () => {
-    console.log('꺠미봇 준비완료!');
+    console.log('\n꺠미봇 준비완료!');
     client.user.setActivity('꺠미야', { type: "LISTENING" })
 });
 
