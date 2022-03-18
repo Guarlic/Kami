@@ -43,7 +43,7 @@ client.on("messageCreate", async msg => {
     const command = args.shift().toLowerCase();
 
     try {
-      client.commands.get(command).execute(msg, args);
+      client.commands.get(command).execute(client, msg, args);
     }
     catch (error) {
       for (var i = 0; i < cmdlist.length; i++) {

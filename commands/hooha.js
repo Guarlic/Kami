@@ -1,7 +1,7 @@
 module.exports = {
   name: "후하",
   discription: "후후 하",
-  execute(msg) {
+  execute(client, msg) {
     const temp = Math.floor(Math.random() * 2 + 1);
     switch (temp) {
       case 1:
