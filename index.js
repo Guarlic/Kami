@@ -22,7 +22,7 @@ console.log('<감지된 추가 명령어>\n');
 
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
-    console.log(command.name);
+    console.log(`- ${command.name}`);
     client.commands.set(command.name, command);
 }
 
