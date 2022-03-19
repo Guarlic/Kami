@@ -1,22 +1,22 @@
 {
-  "cmdlist": [
-    {"CmdName":"꺠미야", "output":"저 여깄어요!", "react":null},
-    {"CmdName":"꺠미야 안녕", "output":"안녕하세여!", "react":null},
-    {"CmdName":"꺠미야 뭐해", "output":"코드를 읽고 있어요!", "react":null},
-    {"CmdName":"꺠미야 냥냥", "output":"안녕하세요 키딩냥이에요 냥냥!.. 아 이거 아닌가?", "react":null},
-    {"CmdName":"꺠미야 구알릭", "output":"구알릭 (Guarlic3432#4857) 님은 저의 개발자에요! 김개미봇도 만들었다 해요!!", "react":null},
-    {"CmdName":"꺠미야 넌 누구야", "output":"전 구알릭 (Guarlic3432#4857) 님이 만드신 챗봇 꺠미에요!", "react":null},
-    {"CmdName":"꺠미야 잘가", "output":"잘가요 ㅜㅜ", "react":"😭"},
-    {"CmdName":"꺠미 바보", "output":"ㅖ? 저 바보 아니라구요!!", "react":"😡"},
-    {"CmdName":"꺠미 천재", "output":"ㅖ? 저 바보 아ㄴ.. 아 천재라구요? 감사해요!!", "react":"❤️"},
-    {"CmdName":"꺠미야 뿜", "output":"뿜빠리빰빠바 빠리빠리빰뿜!!", "react":null},
-    {"CmdName":"꺠미야 흙흙", "output":"흙흙모래모래자갈자갈돌돌바위바위용암용암마그마마그마백두산백두산지구지구달달해해안드로메다안드로메다우주우주평행우주평행우주옴니버스옴니버스공허공허무무..", "react":null},
-    {"CmdName":"꺠미야 꿻", "output":"뀁쀞뙍꽦뺋뽽꽩쨇", "react":null},
-    {"CmdName":"꺠미야 애플", "output":"애플이 최고지!!", "react":"🍎"},
-    {"CmdName":"꺠미야 응아니야", "output":"..ㅖ? ㅂㄷㅂㄷ", "react":"💔"},
-    {"CmdName":"꺠미야 삼성", "output":"삼성도 괜찮지!!", "react":"✨"},
-    {"CmdName":"꺠미야 살아있니", "output":"저 살아있어요!!", "react":"😀"},
-    {"CmdName":"꺠미야 ㄹㅇㅋㅋ", "output":"아 ㄹㅇㅋㅋ만 쳐~", "react":null},
-    {"CmdName":"꺠미야 머이머이", "output":"머이~머이~~!", "react":null}
-  ]
+    "cmdlist": [
+        {"CmdName":"꺠미야", "output":"저 여깄어요!", "react":null},
+        {"CmdName":"꺠미야 안녕", "output":"안녕하세여!", "react":null},
+        {"CmdName":"꺠미야 뭐해", "output":"코드를 읽고 있어요!", "react":null},
+        {"CmdName":"꺠미야 냥냥", "output":"안녕하세요 키딩냥이에요 냥냥!.. 아 이거 아닌가?", "react":null},
+        {"CmdName":"꺠미야 구알릭", "output":"구알릭 (Guarlic3432#4857) 님은 저의 개발자에요! 김개미봇도 만들었다 해요!!", "react":null},
+        {"CmdName":"꺠미야 넌 누구야", "output":"전 구알릭 (Guarlic3432#4857) 님이 만드신 챗봇 꺠미에요!", "react":null},
+        {"CmdName":"꺠미야 잘가", "output":"잘가요 ㅜㅜ", "react":"😭"},
+        {"CmdName":"꺠미 바보", "output":"ㅖ? 저 바보 아니라구요!!", "react":"😡"},
+        {"CmdName":"꺠미 천재", "output":"ㅖ? 저 바보 아ㄴ.. 아 천재라구요? 감사해요!!", "react":"❤️"},
+        {"CmdName":"꺠미야 뿜", "output":"뿜빠리빰빠바 빠리빠리빰뿜!!", "react":null},
+        {"CmdName":"꺠미야 흙흙", "output":"흙흙모래모래자갈자갈돌돌바위바위용암용암마그마마그마백두산백두산지구지구달달해해안드로메다안드로메다우주우주평행우주평행우주옴니버스옴니버스공허공허무무..", "react":null},
+        {"CmdName":"꺠미야 꿻", "output":"뀁쀞뙍꽦뺋뽽꽩쨇", "react":null},
+        {"CmdName":"꺠미야 애플", "output":"애플이 최고지!!", "react":"🍎"},
+        {"CmdName":"꺠미야 응아니야", "output":"..ㅖ? ㅂㄷㅂㄷ", "react":"💔"},
+        {"CmdName":"꺠미야 삼성", "output":"삼성도 괜찮지!!", "react":"✨"},
+        {"CmdName":"꺠미야 살아있니", "output":"저 살아있어요!!", "react":"😀"},
+        {"CmdName":"꺠미야 ㄹㅇㅋㅋ", "output":"아 ㄹㅇㅋㅋ만 쳐~", "react":null},
+        {"CmdName":"꺠미야 머이머이", "output":"머이~머이~~!", "react":null}
+    ]
 }
