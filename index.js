@@ -1,15 +1,9 @@
 let { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 let fs = require('fs');
-let readline = require('readline');
-let client = new Client({ intents: [Intents.FLAGS.GUILDS,
-      Intents.FLAGS.GUILD_MESSAGES ] });
+let client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES ] });
 client.commands = new Collection();
 
 const { clientid, token } = require('./config.json');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
 let commandjson = fs.readFileSync('commands.json','utf-8');
 
@@ -43,17 +37,17 @@ client.on("messageCreate", async msg => {
     const command = args.shift().toLowerCase();
 
     try {
-      client.commands.get(command).execute(client, msg, args);
+        client.commands.get(command).execute(client, msg, args);
     }
     catch (error) {
-      for (var i = 0; i < cmdlist.length; i++) {
-        if (msg.content == cmdlist[i].CmdName) {
-          console.log(`${cmdlist[i].CmdName} 명령어가 인식되었습니다!`);
-          msg.reply(cmdlist[i].output);
-          if (cmdlist[i].react != null)
-            msg.react(cmdlist[i].react);
+        for (var i = 0; i < cmdlist.length; i++) {
+            if (msg.content == cmdlist[i].CmdName) {
+                console.log(`${cmdlist[i].CmdName} 명령어가 인식되었습니다!`);
+                msg.reply(cmdlist[i].output);
+                if (cmdlist[i].react != null) { msg.react(cmdlist[i].react); }
+                return;
+            }
         }
-      }
     }
 });
 
