@@ -38,6 +38,8 @@ client.on("messageCreate", async msg => {
     const command = args.shift().toLowerCase();
 
     try {
+        if (msg.content.startsWith(default_prefix2))
+            console.log(`${msg.content} 명령어가 감지되었습니다!`);
         client.commands.get(command).execute(client, msg, args);
         return;
     }
