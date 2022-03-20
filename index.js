@@ -16,7 +16,7 @@ console.log('<감지된 추가 명령어>\n');
 
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
-    console.log(`- ${command.name}`);
+    console.log(`- 이름: ${command.name}, 설명: ${command.description}`);
     client.commands.set(command.name, command);
 }
 
