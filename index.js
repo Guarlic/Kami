@@ -20,7 +20,8 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
-const default_prefix = "꺠미야 ";
+const default_prefix = "꺠미";
+const default_prefix2 = "꺠미야 ";
 
 // 클라이언트 시작
 client.once('ready', () => {
@@ -29,11 +30,11 @@ client.once('ready', () => {
 });
 
 client.on("messageCreate", async msg => {
-    if (msg.author.bot) return;
+    if (msg.author.bot || !msg.content.startsWith(default_prefix)) return;
     // 메시지 값 콘솔
     console.log(`[ ${msg.guild.name} ] "${msg.channel.name}" ${msg.member.user.username}#${msg.member.user.discriminator} : ${msg.content}`);
     
-    const args = msg.content.slice(default_prefix.length).split(/ +/);
+    const args = msg.content.slice(default_prefix2.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
     try {
