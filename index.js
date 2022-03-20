@@ -52,6 +52,13 @@ client.on("messageCreate", async msg => {
             }
         }
     }
+
+    if (msg.content.slice(default_prefix.length + 1) != "" || msg.content.slice(default_prefix2.length) != "") {
+        if (msg.content.startsWith(default_prefix2))
+            msg.reply(`\`${msg.content.slice(default_prefix2.length)}\`..?`);
+        else if (msg.content.startsWith(default_prefix))
+            msg.reply(`\`${msg.content.slice(default_prefix.length + 1)}\`..?`);
+    }
 });
 
 client.login(token);
