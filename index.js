@@ -39,13 +39,15 @@ client.on("messageCreate", async msg => {
 
     try {
         client.commands.get(command).execute(client, msg, args);
+        return;
     }
     catch (error) {
         for (var i = 0; i < cmdlist.length; i++) {
             if (msg.content == cmdlist[i].CmdName) {
                 console.log(`${cmdlist[i].CmdName} 명령어가 인식되었습니다!`);
                 msg.reply(cmdlist[i].output);
-                if (cmdlist[i].react != null) { msg.react(cmdlist[i].react); }
+                if (cmdlist[i].react != null)
+                    msg.react(cmdlist[i].react);
                 return;
             }
         }
