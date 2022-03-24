@@ -1,3 +1,6 @@
+# GimKami (킴꺠미)
+- 소작농 작업실의 채팅 봇입니다.
+
 ### GimKamiBot 소스코드
 
 > GimKamiBot 사용 설명서
