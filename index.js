@@ -55,7 +55,7 @@ client.on("messageCreate", async msg => {
         }
     }
 
-    if (msg.content.startsWith(default_prefix) && msg.content.slice(default_prefix) != ' ') {
+    if (msg.content.startsWith(default_prefix) && msg.content.slice(default_prefix) != ' ' && msg.content != default_prefix) {
         if (msg.content.startsWith(default_prefix2)) {
             msg.reply(`\`${msg.content.slice(default_prefix2.length)}\`..?`);
             return;
