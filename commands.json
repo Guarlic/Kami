@@ -3,6 +3,7 @@
         {"CmdName":"꺠미야", "output":"저 여깄어요!", "react":null},
         {"CmdName":"꺠미야 안녕", "output":"안녕하세여!", "react":null},
         {"CmdName":"꺠미야 뭐해", "output":"코드를 읽고 있어요!", "react":null},
+        {"CmdName":"꺠미야 뭐하슘", "output":"코드를 읽고 있어요!", "react":null},
         {"CmdName":"꺠미야 냥냥", "output":"안녕하세요 키딩냥이에요 냥냥!.. 아 이거 아닌가?", "react":null},
         {"CmdName":"꺠미야 구알릭", "output":"구알릭 (Guarlic3432#4857) 님은 저의 개발자에요! 김개미봇도 만들었다 해요!!", "react":null},
         {"CmdName":"꺠미야 넌 누구야", "output":"전 구알릭 (Guarlic3432#4857) 님이 만드신 챗봇 꺠미에요!", "react":null},
