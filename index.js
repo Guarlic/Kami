@@ -57,6 +57,9 @@ client.on("messageCreate", async msg => {
     const args = msg.content.slice(default_prefix2.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
+    if (!user.id)
+      user.gem = 0;
+
     if (msg.content == "꺠미야 돈줘") {
         if (user.id) {
             if (user.date == date) {
@@ -69,6 +72,7 @@ client.on("messageCreate", async msg => {
                     id,
                     name,
                     date,
+                    gem : user.gem,
                     money : user.money + howMuch
                 };
             }
@@ -76,7 +80,7 @@ client.on("messageCreate", async msg => {
           fs.writeFileSync(filePath, JSON.stringify(saveUser));
         }
         else
-            msg.reply('등록되지 않았어요! `꺠미야 등록` 을 입력해보세요!');
+            msg.reply('등록되지 않은 유저에요! `꺠미야 등록` 을 입력해보세요!');
         return;
     }
     else if (msg.content == "꺠미야 등록") {
@@ -87,6 +91,7 @@ client.on("messageCreate", async msg => {
               id,
               name,
               date : user.date,
+              gem : user.gem,
               money : user.money
           };
       }
@@ -96,6 +101,7 @@ client.on("messageCreate", async msg => {
               id,
               name,
               date : 0,
+              gem : user.gem,
               money : howMuch
           };
       }
@@ -113,7 +119,7 @@ client.on("messageCreate", async msg => {
     }
     else if (msg.content == "꺠미야 지갑") {
         if (user.id)
-            msg.reply(`현재 잔액은 ${user.money}꺰이에요!`);
+            msg.reply(`현재 잔액은 ${user.money}꺰이에요!\n꺰보석은 ${user.gem}개 가지고 있어요!`);
         else
             msg.reply('등록되지 않은 유저에요! \`꺠미야 등록\` 을 입력해주세요!');
         return;
@@ -129,17 +135,62 @@ client.on("messageCreate", async msg => {
         if (user.id) {
             switch (msg.content) {
               case '꺠미야 구매-꺰보석':
+                  if (user.money < 100) {
+                      msg.reply('잔액이 부족합니다!');
+                      saveUser = {
+                          id,
+                          name,
+                          date : user.date,
+                          gem : user.gem,
+                          money : user.money
+                      };
+                      return;
+                  }
                   msg.reply('꺰보석이 성공적으로 구매되었습니다!');
                   saveUser = {
                       id,
                       name,
                       date : user.date,
+                      gem : user.gem + 1,
                       money : user.money - howMuch
                   };
             }
         }
-      fs.writeFileSync(filePath, JSON.stringify(saveUser));
-      return;
+        else
+            msg.reply('등록되지 않은 유저에요! \`꺠미야 등록\` 을 입력해주세요!');
+        fs.writeFileSync(filePath, JSON.stringify(saveUser));
+        return;
+    }
+    else if (msg.content.startsWith('꺠미야 판매-')) {
+        if (user.id) {
+            switch (msg.content) {
+              case '꺠미야 판매-꺰보석':
+                  if (!user.gem) {
+                      msg.reply('꺰보석이 부족합니다!');
+                      saveUser = {
+                          id,
+                          name,
+                          date : user.date,
+                          gem : user.gem,
+                          money : user.money
+                      };
+                      return;
+                  }
+                          
+                  msg.reply('꺰보석이 성공적으로 판매되었습니다!');
+                  saveUser = {
+                      id,
+                      name,
+                      date : user.date,
+                      gem : user.gem - 1,
+                      money : user.money + howMuch
+                  };
+            }
+        }
+        else
+          msg.reply('등록되지 않은 유저에요! \`꺠미야 등록\` 을 입력해주세요!');
+        fs.writeFileSync(filePath, JSON.stringify(saveUser));
+        return;
     }
 
     try {
