@@ -118,6 +118,29 @@ client.on("messageCreate", async msg => {
             msg.reply('등록되지 않은 유저에요! \`꺠미야 등록\` 을 입력해주세요!');
         return;
     }
+    else if (msg.content == "꺠미야 상점") {
+        if (user.id)
+            msg.reply('꺰보석 - 100꺰');
+        else
+            msg.reply('등록되지 않은 유저에요! \`꺠미야 등록\` 을 입력해주세요!');
+        return;
+    }
+    else if (msg.content.startsWith('꺠미야 구매-')) {
+        if (user.id) {
+            switch (msg.content) {
+              case '꺠미야 구매-꺰보석':
+                  msg.reply('꺰보석이 성공적으로 구매되었습니다!');
+                  saveUser = {
+                      id,
+                      name,
+                      date : user.date,
+                      money : user.money - howMuch
+                  };
+            }
+        }
+      fs.writeFileSync(filePath, JSON.stringify(saveUser));
+      return;
+    }
 
     try {
         if (msg.content.startsWith(default_prefix2))
