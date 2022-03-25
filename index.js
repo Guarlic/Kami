@@ -49,6 +49,7 @@ client.on("messageCreate", async msg => {
     const user = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     const today = new Date();
     const date = '' + today.getFullYear() + today.getMonth() + today.getDate();
+    const Gdate = '' + today.getFullYear() + today.getMonth() + today.getDate();
 
     const howMuch = 100;
 
@@ -57,8 +58,10 @@ client.on("messageCreate", async msg => {
     const args = msg.content.slice(default_prefix2.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if (!user.id)
+    if (!user.id) {
       user.gem = 0;
+      user.Gdate = 0;
+    }
 
     if (msg.content == "꺠미야 돈줘") {
         if (user.id) {
@@ -72,6 +75,7 @@ client.on("messageCreate", async msg => {
                     id,
                     name,
                     date,
+                    Gdate : user.Gdate,
                     gem : user.gem,
                     money : user.money + howMuch
                 };
@@ -91,6 +95,7 @@ client.on("messageCreate", async msg => {
               id,
               name,
               date : user.date,
+              Gdate : user.Gdate,
               gem : user.gem,
               money : user.money
           };
@@ -101,6 +106,7 @@ client.on("messageCreate", async msg => {
               id,
               name,
               date : 0,
+              Gdate : user.Gdate,
               gem : user.gem,
               money : howMuch
           };
@@ -141,6 +147,7 @@ client.on("messageCreate", async msg => {
                           id,
                           name,
                           date : user.date,
+                          Gdate : user.Gdate,
                           gem : user.gem,
                           money : user.money
                       };
@@ -151,6 +158,7 @@ client.on("messageCreate", async msg => {
                       id,
                       name,
                       date : user.date,
+                      Gdate : user.Gdate,
                       gem : user.gem + 1,
                       money : user.money - howMuch
                   };
@@ -171,6 +179,7 @@ client.on("messageCreate", async msg => {
                           id,
                           name,
                           date : user.date,
+                          Gdate : user.Gdate,
                           gem : user.gem,
                           money : user.money
                       };
@@ -182,6 +191,7 @@ client.on("messageCreate", async msg => {
                       id,
                       name,
                       date : user.date,
+                      Gdate : user.Gdate,
                       gem : user.gem - 1,
                       money : user.money + howMuch
                   };
@@ -189,6 +199,37 @@ client.on("messageCreate", async msg => {
         }
         else
           msg.reply('등록되지 않은 유저에요! \`꺠미야 등록\` 을 입력해주세요!');
+        fs.writeFileSync(filePath, JSON.stringify(saveUser));
+        return;
+    }
+    else if (msg.content == "꺠미야 보석타임") {
+        if (user.id) {
+            if (Number(user.Gdate) <= date - 7) {
+                const howMuch = 10;
+                msg.reply('보석타임!! 삐슝빠슝뿌슝!!\n꺰보석 10개~!!!!');
+                saveUser = {
+                    id,
+                    name,
+                    date,
+                    Gdate,
+                    gem : user.gem + howMuch,
+                    money : user.money
+                };
+            }
+            else {
+                msg.reply('아직 보석타임이 아니에요!');
+                saveUser = {
+                    id,
+                    name,
+                    date : user.date,
+                    Gdate : user.Gdate,
+                    gem : user.gem,
+                    money : user.money
+                };
+            }
+        }
+        else
+            msg.reply('등록되지 않은 유저에요! \`꺠미야 등록\` 을 입력해주세요!');
         fs.writeFileSync(filePath, JSON.stringify(saveUser));
         return;
     }
