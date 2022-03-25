@@ -23,6 +23,13 @@ for (const file of commandFiles) {
 const default_prefix = "꺠미";
 const default_prefix2 = "꺠미야 ";
 
+function deleteFileCallback(error) {
+    if (error)
+        console.log(`오류; 탈퇴 실패\n${error.message}`);
+    else
+        console.log('탈퇴 성공');
+}
+
 // 클라이언트 시작
 client.once('ready', () => {
     console.log('\n꺠미봇 준비완료!');
@@ -33,9 +40,84 @@ client.on("messageCreate", async msg => {
     if (msg.author.bot || !msg.content.startsWith(default_prefix)) return;
     // 메시지 값 콘솔
     console.log(`[ ${msg.guild.name} ] "${msg.channel.name}" ${msg.member.user.username}#${msg.member.user.discriminator} : ${msg.content}`);
+    const id = msg.author.id;
+    const name = msg.author.username;
+    const filePath = `./data/${id}.json`;
+
+    !fs.existsSync(filePath) ? fs.writeFileSync(filePath, JSON.stringify({})) : null;
+
+    const user = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    const today = new Date();
+    const date = '' + today.getFullYear() + today.getMonth() + today.getDate();
+
+    const howMuch = 100;
+
+    let saveUser = {};
     
     const args = msg.content.slice(default_prefix2.length).split(/ +/);
     const command = args.shift().toLowerCase();
+
+    if (msg.content == "꺠미야 돈줘") {
+        if (user.id) {
+            if (user.date == date) {
+              msg.reply('오늘의 꺰은 이미 수령했어요!');
+              saveUser = user;
+            }
+            else {
+                msg.reply(`${howMuch}꺰을 수령했어요!! 내일 또 봐요~!`);
+                saveUser = {
+                    id,
+                    name,
+                    date,
+                    money : user.money + howMuch
+                };
+            }
+
+          fs.writeFileSync(filePath, JSON.stringify(saveUser));
+        }
+        else
+            msg.reply('등록되지 않았어요! `꺠미야 등록` 을 입력해보세요!');
+        return;
+    }
+    else if (msg.content == "꺠미야 등록") {
+      const howMuch = 300;
+      if (user.id) {
+          msg.reply('이미 등록하셨어요!');
+          saveUser = {
+              id,
+              name,
+              date : user.date,
+              money : user.money
+          };
+      }
+      else {
+          msg.reply(`등록을 축하드려요! 보상 ${howMuch}꺰 이에요!`);
+          saveUser = {
+              id,
+              name,
+              date : 0,
+              money : howMuch
+          };
+      }
+      fs.writeFileSync(filePath, JSON.stringify(saveUser));
+      return;
+    }
+    else if (msg.content == "꺠미야 탈퇴") {
+        if (user.id) {
+            fs.unlink(filePath, deleteFileCallback);
+            msg.reply('탈퇴 했어요 ㅜ.ㅜ 다음에 또 봐요');
+        }
+        else
+            msg.reply('ㄴ..네? 등록하시지 않았어요;;');
+        return;
+    }
+    else if (msg.content == "꺠미야 지갑") {
+        if (user.id)
+            msg.reply(`현재 잔액은 ${user.money}꺰이에요!`);
+        else
+            msg.reply('등록되지 않은 유저에요! \`꺠미야 등록\` 을 입력해주세요!');
+        return;
+    }
 
     try {
         if (msg.content.startsWith(default_prefix2))
