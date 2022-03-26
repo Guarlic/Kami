@@ -75,6 +75,7 @@ client.on("messageCreate", async msg => {
                     date,
                     Gdate : user.Gdate,
                     gem : user.gem,
+                    blackstone : user.blackstone,
                     money : user.money + howMuch
                 };
             }
