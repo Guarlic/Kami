@@ -54,7 +54,10 @@ client.on("messageCreate", async msg => {
     const howMuch = 100;
 
     let saveUser = {};
-    
+
+    if (!user.id)
+        user.blackstone = 0;
+
     const args = msg.content.slice(default_prefix2.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
@@ -92,6 +95,7 @@ client.on("messageCreate", async msg => {
               date : user.date,
               Gdate : user.Gdate,
               gem : user.gem,
+              blackstone : user.blackstone,
               money : user.money
           };
       }
@@ -103,6 +107,7 @@ client.on("messageCreate", async msg => {
               date : 0,
               Gdate : 0,
               gem : 0,
+              blackstone : 0,
               money : howMuch
           };
       }
@@ -119,8 +124,13 @@ client.on("messageCreate", async msg => {
         return;
     }
     else if (msg.content == "꺠미야 지갑") {
-        if (user.id)
+        if (user.id) {
+            if (user.blackstone) {
+                msg.reply(`현재 잔액은 ${user.money}꺰이에요!\n꺰보석은 ${user.gem}개 가지고 있어요!... 그리고 블랙스톤도 ${user.blackstone}개 가지고 있군..요?`);
+                return;
+            }
             msg.reply(`현재 잔액은 ${user.money}꺰이에요!\n꺰보석은 ${user.gem}개 가지고 있어요!`);
+        }
         else
             msg.reply('등록되지 않은 유저에요! \`꺠미야 등록\` 을 입력해주세요!');
         return;
@@ -143,7 +153,7 @@ client.on("messageCreate", async msg => {
                           name,
                           date : user.date,
                           Gdate : user.Gdate,
-                          gem : user.gem,
+                          blackstone : user.blackstone,
                           money : user.money
                       };
                       return;
@@ -155,8 +165,36 @@ client.on("messageCreate", async msg => {
                       date : user.date,
                       Gdate : user.Gdate,
                       gem : user.gem + 1,
+                      blackstone : user.blackstone,
                       money : user.money - howMuch
                   };
+                break;
+              case '꺠미야 구매-히든_블랙스톤':
+                  if (user.money < 10000) {
+                      msg.reply('돈을 챙겨 돌아와라.');
+                      msg.react('😎');
+                      saveUser = {
+                          id,
+                          name,
+                          date : user.date,
+                          Gdate : user.Gdate,
+                          gem : user.gem,
+                          blackstone : user.blackstone,
+                          money : user.money
+                      };
+                      return;
+                  }
+                  msg.reply('물건은 여기있다..');
+                  saveUser = {
+                      id,
+                      name,
+                      date : 0,
+                      Gdate : 0,
+                      gem : user.gem + 100,
+                      blackstone : user.blackstone + 1,
+                      money : user.money - 10000
+                  };
+                  break;
             }
         }
         else
@@ -176,6 +214,7 @@ client.on("messageCreate", async msg => {
                           date : user.date,
                           Gdate : user.Gdate,
                           gem : user.gem,
+                          blackstone : user.blackstone,
                           money : user.money
                       };
                       return;
@@ -188,8 +227,36 @@ client.on("messageCreate", async msg => {
                       date : user.date,
                       Gdate : user.Gdate,
                       gem : user.gem - 1,
+                      blackstone : user.blackstone,
                       money : user.money + howMuch
                   };
+                  break;
+              case '꺠미야 판매-히든_블랙스톤':
+                  if (!user.blackstone) {
+                      msg.reply('블랙스톤을 가지고 와라.');
+                      msg.react('😎');
+                      saveUser = {
+                          id,
+                          name,
+                          date : user.date,
+                          Gdate : user.Gdate,
+                          gem : user.gem,
+                          blackstone : user.blackstone,
+                          money : user.money
+                      };
+                      return;
+                  }
+                  msg.reply('블랙스톤이 1개 파괴되었다..');
+                  saveUser = {
+                      id,
+                      name,
+                      date : user.date,
+                      Gdate : user.Gdate,
+                      gem : user.gem,
+                      blackstone : user.blackstone - 1,
+                      money : user.money
+                  };
+                  break;
             }
         }
         else
@@ -208,6 +275,7 @@ client.on("messageCreate", async msg => {
                     date,
                     Gdate,
                     gem : user.gem + howMuch,
+                    blackstone : user.blackstone,
                     money : user.money
                 };
             }
@@ -219,6 +287,7 @@ client.on("messageCreate", async msg => {
                     date : user.date,
                     Gdate : user.Gdate,
                     gem : user.gem,
+                    blackstone : user.blackstone,
                     money : user.money
                 };
             }
