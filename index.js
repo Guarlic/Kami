@@ -58,11 +58,6 @@ client.on("messageCreate", async msg => {
     const args = msg.content.slice(default_prefix2.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if (!user.id) {
-      user.gem = 0;
-      user.Gdate = 0;
-    }
-
     if (msg.content == "꺠미야 돈줘") {
         if (user.id) {
             if (user.date == date) {
@@ -106,8 +101,8 @@ client.on("messageCreate", async msg => {
               id,
               name,
               date : 0,
-              Gdate : user.Gdate,
-              gem : user.gem,
+              Gdate : 0,
+              gem : 0,
               money : howMuch
           };
       }
@@ -217,7 +212,7 @@ client.on("messageCreate", async msg => {
                 };
             }
             else {
-                msg.reply('아직 보석타임이 아니에요!');
+                msg.reply(`아직 보석타임이 아니에요! 보석타임까진 ${7 - Number(user.Gdate) + Number(date)}일이 남았어요!`);
                 saveUser = {
                     id,
                     name,
