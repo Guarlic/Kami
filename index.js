@@ -197,6 +197,9 @@ client.on("messageCreate", async msg => {
                   };
                   break;
             }
+            default:
+                msg.reply('없는 물건이에요!');
+                return;
         }
         else
             msg.reply('등록되지 않은 유저에요! \`꺠미야 등록\` 을 입력해주세요!');
@@ -258,6 +261,9 @@ client.on("messageCreate", async msg => {
                       money : user.money
                   };
                   break;
+              default:
+                  msg.reply('없는 물건이에요!');
+                  return;
             }
         }
         else
